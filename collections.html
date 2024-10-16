@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shades of You</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/lucida-unicode-calligraphy" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('6015740.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            position: relative;
+            z-index: 1; /* Set a base z-index for the body */
+        }
+
+        .container-fluid {
+            background-image: url('.jpg');
+            position: relative;
+            z-index: 2; /* Content above the background */
+        }
+
+        .text {
+            font-family: 'Times New Roman';
+            font-size: large;
+            font-weight: 50;
+            color: #000;
+        }
+
+        .welcome {text-align: center;
+            font-size: 130%;
+            text-decoration: underline;
+            font-family: 'Times New Roman';
+        }
+        .grid-item1 {
+            background: transparent;
+            flex: 1 1 30%;
+            margin: 10px;
+            text-align: center;
+            transition: background-color 0.3s;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+
+        @font-face {
+            font-family: 'Bombshell Pro';
+            src: url('BombshellPro.ttf');
+        }
+
+        @font-face {
+            font-family: 'Best Style';
+            src: url('BestStyle.ttf');
+        }
+
+        .mainname {
+            font-style: italic;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.90rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #000000;
+        }
+
+        h1,
+        h2 {
+            font-family: 'Times New Roman';
+            color: #000;
+        }
+
+        .navbar {
+            background: transparent;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            padding-left: 1%;
+            display: flex;
+            align-items: center;
+            color: #c6377e;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-container img.mainlogo {
+            position: relative;
+            z-index: 1;
+            max-height: 30px;
+        }
+
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -8px;
+            width: 150%;
+            height: 130%;
+            background-image: url('logoback.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            border-radius: 50%;
+        }
+        
+        .brand-decor2 {
+            display:grid;
+            align-items: center;
+            justify-content: center;
+            height: 5px;
+        }
+
+        .brand-decor {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 0;
+        }
+
+        .side-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .nav-link {
+            color: #000;
+            font-size: 1rem;
+            margin: 0 15px;
+            position: relative;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #0a0a0a;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-link:hover::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #d63384;
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            transform: scaleX(0);
+            transition: transform 0.1s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .content {
+            padding-top: 80px;
+            padding: 20px;
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            position: relative; /* Set position for the content */
+            z-index: 2; /* Ensure content is above the background */
+        }
+
+       
+
+        .carousel {
+            width: 50%;
+            height: 30%;
+            margin: 40px auto;
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.8);
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            width: 100%;
+            height: 40%;
+            border-radius: 15px;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 40%;
+            object-fit: cover;
+            border-radius: 15px;
+        }
+
+        .contact-section {
+            margin-top: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact-wrapper {
+            background: transparent;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .brand-image {
+            width:45px;
+            height: 40px;
+        }
+
+        .social-links img {
+            width: 40px;
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    
+        @media (max-width: 576px) {
+            .navbar-toggler {
+                padding: 0.25rem 0.5rem;
+            }
+
+            .navbar-toggler-icon {
+                padding-top: 10%;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .grid-item {
+                flex: 1 1 100%;
+            }
+
+            .thumbnail img {
+                max-width: 180px;
+            }
+        }
+
+        .image-description {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1rem;
+            font-family: 'Times New Roman';
+            display: none; /* Initially hidden */
+            background: transparent;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <img class="brand-image" src="vecteezy_exploring-black-and-white-patterns-contrast-and-harmony_48339401.png" alt="Brand Image">
+            <h1 class="mainname navbar-title">Shades of You</h1>
+            <img class="brand-image" src="vecteezy_exploring-black-and-white-patterns-contrast-and-harmony_48339401.png" alt="Brand Image">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="./index.html" id="homeLink">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <br><br><br><br>
+
+    <div class="grid-item1">
+        
+        <h3 class="welcome">SHADES COLLECTIONS</h3>
+    </div>
+
+    <br>
+    <div class="brand-decor">
+        <img class="side-logo" src="REsize.png" alt="Left Design">
+    </div>
+
+    <div class="container">
+        <!-- Carousel 1 -->
+        <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" data-interval="2000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="8.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc1')">
+                </div>
+                <div class="carousel-item">
+                    <img src="8.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc1')">
+                </div>
+                <div class="carousel-item">
+                    <img src="8.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc1')">
+                </div>
+            </div>
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+            </ol>
+            <!-- Carousel Controls -->
+            <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <!-- Description Section for Carousel 1 -->
+        <div class="image-description" id="desc1">
+            <p id="descriptionText1"></p>
+        </div>
+        
+        <br>
+        <div class="brand-decor">
+            <img class="side-logo" src="side2.png" alt="Left Design">
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <div class="brand-decor">
+            <img class="side-logo" src="REsize.png" alt="Left Design">
+        </div>
+
+        <!-- Carousel 2 -->
+        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="3.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc2')">
+                </div>
+                <div class="carousel-item">
+                    <img src="3.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc2')">
+                </div>
+                <div class="carousel-item">
+                    <img src="3.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc2')">
+                </div>
+            </div>
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+            </ol>
+            <!-- Carousel Controls -->
+            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <br>
+        <!-- Description Section for Carousel 2 -->
+        <div class="image-description" id="desc2">
+            <p id="descriptionText2"></p>
+        </div>
+        <br>
+        <div class="brand-decor">
+            <img class="side-logo" src="side2.png" alt="Left Design">
+        </div>
+<br>
+        <br>
+        <br>
+        <div class="brand-decor">
+            <img class="side-logo" src="REsize.png" alt="Left Design">
+        </div>
+    
+
+
+        <!-- Carousel 3 -->
+        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="2000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="7.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc3')">
+                </div>
+                <div class="carousel-item">
+                    <img src="7.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc3')">
+                </div>
+                <div class="carousel-item">
+                    <img src="7.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc3')">
+                </div>
+            </div>
+            <!-- Carousel Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+            </ol>
+            <!-- Carousel Controls -->
+            <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+
+
+
+        <br>
+        <!-- Description Section for Carousel 3-->
+        <div class="image-description" id="desc3">
+            <p id="descriptionText3"></p>
+        </div>
+        <br>
+        <div class="brand-decor">
+            <img class="side-logo" src="side2.png" alt="Left Design">
+        </div>
+        <br><br><br>
+        <div class="brand-decor">
+            <img class="side-logo" src="REsize.png" alt="Left Design">
+        </div>
+    
+
+
+
+<br>
+
+ <!-- Carousel 4 -->
+ <div id="carouselExampleIndicators1" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="13.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc4')">
+        </div>
+        <div class="carousel-item">
+            <img src="13.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc4')">
+        </div>
+        <div class="carousel-item">
+            <img src="13.1.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc4')">
+        </div>
+    </div>
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators1" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators1" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+<!-- Description Section for Carousel 4 -->
+<div class="image-description" id="desc4">
+    <p id="descriptionText4"></p>
+</div>
+<br>
+
+<div class="brand-decor">
+    <img class="side-logo" src="side2.png" alt="Left Design">
+</div>
+<br>
+<br>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="REsize.png" alt="Left Design">
+</div>
+
+<!-- Carousel 5-->
+<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="2.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc5')">
+        </div>
+        <div class="carousel-item">
+            <img src="2.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc5')">
+        </div>
+        <div class="carousel-item">
+            <img src="2.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc5')">
+        </div>
+    </div>
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+<!-- Description Section for Carousel 5 -->
+<div class="image-description" id="desc5">
+    <p id="descriptionText5"></p>
+</div>
+<br>
+
+<div class="brand-decor">
+    <img class="side-logo" src="side2.png" alt="Left Design">
+</div>
+<br>
+<br>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="REsize.png" alt="Left Design">
+</div>
+
+<!-- Carousel 6 -->
+<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="5.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc6')">
+        </div>
+        <div class="carousel-item">
+            <img src="5.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc6')">
+        </div>
+        <div class="carousel-item">
+            <img src="5.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc6')">
+        </div>
+    </div>
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+<!-- Description Section for Carousel 7-->
+<div class="image-description" id="desc6">
+    <p id="descriptionText6"></p>
+</div>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="side2.png" alt="Left Design">
+</div>
+<br>
+<br>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="REsize.png" alt="Left Design">
+</div>
+
+
+
+
+<!-- Carousel 7 -->
+<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="1.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc7')">
+        </div>
+        <div class="carousel-item">
+            <img src="1.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc7')">
+        </div>
+        <div class="carousel-item">
+            <img src="1.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc7')">
+        </div>
+    </div>
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+<br>
+<!-- Description Section for Carousel 7-->
+<div class="image-description" id="desc7">
+    <p id="descriptionText7"></p>
+</div>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="side2.png" alt="Left Design">
+</div>
+<br>
+<br>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="REsize.png" alt="Left Design">
+</div>
+
+<!-- Carousel 8 -->
+<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="10.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc8')">
+        </div>
+        <div class="carousel-item">
+            <img src="10.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc8')">
+        </div>
+        <div class="carousel-item">
+            <img src="10.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc8')">
+        </div>
+    </div>
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+<!-- Description Section for Carousel 8-->
+<div class="image-description" id="desc8">
+    <p id="descriptionText8"></p>
+</div>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="side2.png" alt="Left Design">
+</div>
+<br>
+<br>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="REsize.png" alt="Left Design">
+</div>
+
+<!-- Carousel 9 -->
+<div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="12.1.jpg" class="d-block w-100" alt="Fashion Image 1" onclick="showDescription(1, 'desc9')">
+        </div>
+        <div class="carousel-item">
+            <img src="12.2.jpg" class="d-block w-100" alt="Fashion Image 2" onclick="showDescription(2, 'desc9')">
+        </div>
+        <div class="carousel-item">
+            <img src="12.3.jpg" class="d-block w-100" alt="Fashion Image 3" onclick="showDescription(3, 'desc9')">
+        </div>
+    </div>
+    <!-- Carousel Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel Controls -->
+    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    </a>
+</div>
+
+<!-- Description Section for Carousel 9-->
+<div class="image-description" id="desc9">
+    <p id="descriptionText9"></p>
+</div>
+<br>
+<div class="brand-decor">
+    <img class="side-logo" src="side2.png" alt="Left Design">
+</div>
+<br>
+
+
+        <br>
+        <!-- Contact and Social Media Section -->
+        <div class="contact-section" id="contactSection">
+            <div class="contact-wrapper">
+                <h2>Contact Us</h2>
+                <p>For inquiries, feel free to reach out!</p>
+                <div class="social-links">
+                    <!-- <a href="https://www.instagram.com/shadesofyou_23/" target="_blank"> -->
+                        <img src="insta.png" alt="Instagram Logo">
+                    </a>
+                    <a href="https://www.linkedin.com" target="_blank">
+                        <img src="linkdin.png" alt="LinkedIn Logo">
+                    </a>
+                    <a href="mailto:yashranjeetkadam@gmail.com" target="_blank"><img src="email.png" alt="Email Logo"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+          const descriptions = {
+                desc1: [
+                    "New Special One Short Kurti Fully Sttiched Ready To Wear *KURTA FABRIC*: PURE COTTON---*SIZE*:S(32) M(34) L(36)",
+                    "New Special One Short Kurti Fully Sttiched Ready To Wear *KURTA FABRIC*: PURE COTTON---*SIZE*:S(32) M(34) L(36)",
+                    "New Special One Short Kurti Fully Sttiched Ready To Wear *KURTA FABRIC*: PURE COTTON---*SIZE*:S(32) M(34) L(36)"
+                ],
+                desc2: [
+                    "Description for Fashion Image 4.",
+                    "Description for Fashion Image 5.",
+                    "Description for Fashion Image 6."
+                ],
+                desc3: [
+                    "Description for Fashion Image 7.",
+                    "Description for Fashion Image 8.",
+                    "Description for Fashion Image 9."
+                ],
+                desc4: [
+                    "Description for Fashion Image 10.",
+                    "Description for Fashion Image 11.",
+                    "Description for Fashion Image 12."
+                ],
+                desc5: [
+                    "Description for Fashion Image 13.",
+                    "Description for Fashion Image 14.",
+                    "Description for Fashion Image 15."
+                ],
+                desc6: [
+                    "Description for Fashion Image 16.",
+                    "Description for Fashion Image 17.",
+                    "Description for Fashion Image 18."
+                ],
+                desc7: [
+                    "Description for Fashion Image 19.",
+                    "Description for Fashion Image 20.",
+                    "Description for Fashion Image 21."
+                ],
+                desc8: [
+                    "Description for Fashion Image 22.",
+                    "Description for Fashion Image 23.",
+                    "Description for Fashion Image 24."
+                ],
+                desc9: [
+                    "Description for Fashion Image 25.",
+                    "Description for Fashion Image 26.",
+                    "Description for Fashion Image 27."
+                ],
+                desc10: [
+                    "Description for Fashion Image 28.",
+                    "Description for Fashion Image 29.",
+                    "Description for Fashion Image 30."
+                ]
+            };
+
+            function showDescription(index, descId) {
+                const descriptionText = document.getElementById(`descriptionText${descId.charAt(descId.length - 1)}`);
+                descriptionText.textContent = descriptions[descId][index - 1];
+                document.getElementById(descId).style.display = 'block'; // Show the description
+                
+                // Scroll to the description
+                document.getElementById(descId).scrollIntoView({ behavior: 'smooth' });
+            }
+    </script>
+</body>
+
+</html>
